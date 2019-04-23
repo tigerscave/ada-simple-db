@@ -1,6 +1,6 @@
 'use strict';
 
-const endpoint = 'https://ada-simple-db.herokuapp.com/';
+const endpoint = 'https://ada-simple-db.herokuapp.com';
 
 const onDeleteButtonClicked = (e) => {
   const id = parseInt(e.target.value);
