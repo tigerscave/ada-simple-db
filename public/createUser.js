@@ -1,6 +1,6 @@
 'use strict';
 
-const endpoint = 'https://ada-simple-db.herokuapp.com';
+const endpoint = window.origin;
 
 const createUser = (name, email) => {
   const xhr = new XMLHttpRequest();
