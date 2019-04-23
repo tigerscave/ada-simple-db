@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>user info</title>
+  </head>
+  <body>
+    <h1>user info</h1>
+    <%= user.name %> <br />
+    <%= user.email %>
+    <div>
+      <input
+        id="nameInput"
+        value=<%= user.name %>
+      >
+      <input
+        id="emailInput"
+        value=<%= user.email %>
+      >
+      <button
+        id="updateButton"
+        value=<%= user.id %>
+      >
+        update
+      </button>
+    </div>
+    <div>
+      <button
+        id="deleteButton"
+        value=<%= user.id %>
+      >
+        delete
+      </button>
+    </div>
+    <script src="../public/updateUser.js"></script>
+    <script src="../public/deleteUser.js"></script>
+  </body>
+</html>

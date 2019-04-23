@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>users by ejs</title>
+  </head>
+  <body>
+    <h1>users</h1>
+    <% users.map((user) => {%>
+      <li>
+        <a
+          href=<%= "users/" + user.id %>
+        >
+          <%= user.name %> : 
+          <%= user.email %>
+        </a>
+      </li>
+    <%})%>
+  </body>
+</html>
