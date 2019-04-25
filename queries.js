@@ -8,7 +8,7 @@ const pool = new Pool({
   database: process.env.DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
-  ssl: true
+  ssl: process.env.SSL === 'TRUE'
 });
 
 const getUsers = (request, response) => {

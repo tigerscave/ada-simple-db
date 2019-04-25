@@ -3,19 +3,19 @@
 const endpoint = window.origin;
 
 const createUser = (name, email) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", `${endpoint}/users`);
-  xhr.onreadystatechange = () => {
-    console.log(xhr)
-    if(xhr.readyState === 4 && xhr.status === 201) {
-      alert("user added!");
-
-    }
-  }
   const body = `name=${name}&email=${email}`
-  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-  xhr.send(body);
+  fetch(`${endpoint}/users`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body
+  }).then(response => {
+    alert("user added!");
+    console.log(response)
+  }).catch(error => {
+    console.log(error)
+  })
 }
 
 const onCreateButtonClicked = () => {

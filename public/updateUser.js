@@ -1,23 +1,26 @@
 'use strict';
 
+const updateUser = (id, name, email) => {
+  const body = `name=${name}&email=${email}`
+  fetch(`${endpoint}/users/${id}`, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body
+  }).then(() => {
+    alert('user updated!')
+  }).catch(err => {
+    console.log(err)
+  })
+}
+
 const onUpdateButtonClicked = (e) => {
   const id = parseInt(e.target.value);
-  const xhr = new XMLHttpRequest();
-  xhr.open("PUT", `${endpoint}/users/${id}`);
-  xhr.onreadystatechange = () => {
-    console.log(xhr)
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      alert("user updated");
-    }
-  }
-
   const name = document.getElementById('nameInput').value;
   const email = document.getElementById('emailInput').value;
-  const body = `name=${name}&email=${email}`
 
-  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-  xhr.send(body);
+  updateUser(id, name, email);
 }
 
 const updateButton = document.getElementById('updateButton');

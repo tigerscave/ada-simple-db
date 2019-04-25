@@ -2,18 +2,20 @@
 
 const endpoint = window.origin;
 
+const deleteUser = id => {
+  fetch(`${endpoint}/users/${id}`, {
+    method: 'DELETE',
+  }).then(res => {
+    alert('user deleted!')
+    console.log(res)
+  }).catch(err => {
+    console.log(err)
+  })
+}
+
 const onDeleteButtonClicked = (e) => {
   const id = parseInt(e.target.value);
-  const xhr = new XMLHttpRequest();
-  xhr.open("DELETE", `${endpoint}/users/${id}`);
-  xhr.onreadystatechange = () => {
-    console.log(xhr)
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      alert("user deleted!");
-    }
-  }
-
-  xhr.send(null);
+  deleteUser(id);
 }
 
 const deleteButton = document.getElementById('deleteButton');
