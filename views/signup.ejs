@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>sign up</title>
+  </head>
+  <body>
+    <% if( flashMessage.length > 0 ) { %>
+      <p>Message <%= flashMessage %></p>
+    <% } %>
+    <h1>sign up</h1>
+    <div>
+      <p>Name</p>
+      <input id="nameInput" placeholder="name">
+    </div>
+    <div>
+      <p>Email</p>
+      <input id="emailInput" placeholder="email">
+    </div>
+    <div>
+      <p>Password</p>
+      <input id="passwordInput" placeholder="password">
+    </div>
+    <div>
+      <p>Password Confirm</p>
+      <input id="passwordConfirmInput" placeholder="confirm password">
+    </div>
+    <button id="signUpButton">signUp</button>
+    <script src="./public/signUp.js"></script>
+  </body>
+</html>

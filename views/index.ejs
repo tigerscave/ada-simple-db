@@ -3,13 +3,25 @@
     <title>postgres sample</title>
   </head>
   <body>
+    <% if( expressFlash.length > 0 ) { %>
+      <p>Message <%= expressFlash %></p>
+    <% } %>
     <h1>postgres sample</h1>
     <ul>
+      <li>
+        <a href="./flash">flash</a>
+      </li>
       <li>
         <a href="./users">user</a>
       </li>
       <li>
         <a href="./createUser">createUser</a>
+      </li>
+      <li>
+        <a href="./signup">sign up</a>
+      </li>
+      <li>
+        <a href="./login">login</a>
       </li>
     </ul>
   </body>
