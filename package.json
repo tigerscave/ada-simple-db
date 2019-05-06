@@ -6,7 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "staging": "node -r dotenv/config index.js dotenv_config_path=./.env.staging"
+    "staging": "node -r dotenv/config index.js dotenv_config_path=./.env.staging",
+    "lint": "prettier --write 'index.js' 'queries.js' 'public/**/*.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -18,9 +24,14 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
+    "husky": "^2.2.0",
     "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg": "^7.10.0"
+    "pg": "^7.10.0",
+    "pretty-quick": "^1.10.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.0"
   }
 }
