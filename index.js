@@ -20,11 +20,15 @@ app.use("/public", express.static(__dirname + "/public"));
 
 app.use(flash());
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(session({
   secret: 'hogehoge',
+  resave: false,
+  saveUninitialized: false
 }))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', (req, res) => {
   res.render('index.ejs', {expressFlash: req.flash('info')})
@@ -63,7 +67,8 @@ app.post(
     {
       successRedirect: '/account',
       failureRedirect: '/login',
-      failureFlash: true
+      failureFlash: true,
+      session: true
     }
   ),
   (req, res) => {
@@ -77,13 +82,27 @@ app.post(
 );
 
 app.get('/account', (req, res) => {
-  res.render('account.ejs')
+  console.log(req.isAuthenticated())
+  console.log(req.user)
+  if(req.isAuthenticated()) {
+    res.render('account.ejs', {user: req.user[0]})
+  } else {
+    res.redirect('/login')
+  }
 })
 
 app.post('/users', db.createUser);
 app.put('/users/:id', db.updateUser);
 
 app.delete('/users/:id', db.deleteUser);
+
+app.get('/logout', (req, res) => {
+  console.log("isAuthenticated: ", req.isAuthenticated())
+  req.logout();
+  console.log("isAuthenticated: ", req.isAuthenticated())
+  req.flash('info', 'logout success');
+  res.redirect('/')
+})
 
 app.set('view engine', 'ejs');
 

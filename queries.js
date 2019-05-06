@@ -151,6 +151,8 @@ passport.use(
                           return done();
                         }
                         else if (check) {
+                          console.log("result.rows[0]")
+                          console.log(result.rows[0])
                           return done(
                             null,
                             [{
